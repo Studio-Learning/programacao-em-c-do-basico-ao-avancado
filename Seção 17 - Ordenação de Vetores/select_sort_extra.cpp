@@ -45,37 +45,51 @@ aluno* cadastro(aluno* alu, int tam){
     return novo;
 }
 
-aluno* imprimircrescente(){
-	int menor, troca;
-	if (tamanho==0){
-		cout<<"Nao ha alunos para imprimir"<<endl;
-	}
-	if (tamanho==1){
-		cout<<"Nome: "<<aluno.nome<<endl;
-		cout<<"Nota: "<<aluno.nota<<endl;
-	}
-	for (int i=0; i<(tamanho-1); i++){
-		menor=i;
-		for (int j=(i+1); j<tamanho;j++){
-			if(aluno[j]<aluno[i]){
-				menor=j;
+void ordenarcrescente(aluno *alu, int tam){
+	for (int i=0; i<(tam-1);i++){
+		for (int j=(i+1); j<tam; j++){
+			if (alu[j].nota<alu[i].nota){
+				//trocando
+				alu temp= alu[i];
+				alu[i]=alu[j];
+				alu[j]= temp;
 			}
 		}
-		if(i!=menor){
-			troca=aluno[i];
-			aluno[i]=aluno[menor];
-			aluno[menor]= troca;
+	}	
+}
+
+void ordenardecrescente(aluno *alu, int tam){
+	for (int i=0; i<(tam-1);i++){
+		for (int j=(i+1); j<tam; j++){
+			if (alu[j].nota>alu[i].nota){
+				//trocando
+				alu temp= alu[i];
+				alu[i]=alu[j];
+				alu[j]= temp;
+			}
 		}
+	}	
+}
+
+void imprimir(aluno *alu, int tam){
+	if (tam==0){
+		cout<<"Nao ha alunos para imprimir"<<endl;
 	}
-	for (int i=0; i<tamanho;i++){
-		cout<<"CRESCENTE"<endl;
-		cout<<"Nome: "<<aluno.nome[i]<<endl;
-		cout<<"Nota: "<<aluno.nota[i]<<endl;
+	
+	//imprime crescente
+	ordenarcrescente(aluno, tam);
+	cout<<"ORDEM CRESCENTE: "<<endl;
+	for (int i=0; i<tam; i++){
+		cout<<"Nome: "<<alu[i].nome<<endl;
+		cout<<"Nota: "<<alu[i].nota<<endl;
 	}
-	for (int i=tamanho; i>0;i--){
-		cout<<"DECRESCENTE"<endl;
-		cout<<"Nome: "<<aluno.nome[i]<<endl;
-		cout<<"Nota: "<<aluno.nota[i]<<endl;
+	
+	//imprime decrescente
+	ordenardecrescente(aluno, tam);
+	cout<<"ORDEM DECRESCENTE: "<<endl;
+	for (int i=0; i<tam; i++){
+		cout<<"Nome: "<<alu[i].nome<<endl;
+		cout<<"Nota: "<<alu[i].nota<<endl;
 	}
 }
 
@@ -98,8 +112,7 @@ int main (){
 				break;
 			case 2: 
 				//imprimir notas ordenadas (crescente e decrescente)
-				
-				
+				imprimir(alu, tamanho);
 				break;
 			case 3:
 				//melhor e pior aluno 
