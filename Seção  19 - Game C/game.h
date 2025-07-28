@@ -1,5 +1,6 @@
-//game.h //game.h
+//game.h 
 #include <iostream>
+using namespace std;
 
 typedef struct {
 	int dificuldade;

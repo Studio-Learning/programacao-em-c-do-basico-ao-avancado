@@ -1,13 +1,15 @@
 //game.cpp
-//gane.cpp
 #include "game.h"
+#include <cstdlib> 
+#include <ctime>
+using namespace std;
 
 int pontos = 0;
 
 void jogar(){
-	Calcular calc.
+	Calcular calc;
 	int dificuldade;
-	cout<<"Informa o nivel de dif iculdade [1,2,3 ou 4]: ";
+	cout<<"Informa o nivel de dificuldade [1,2,3 ou 4]: ";
 	cin>>dificuldade;
 	calc.dificuldade=dificuldade;
 	
@@ -16,53 +18,56 @@ void jogar(){
 	calc.operacao = rand()%3;
 	if (calc.dificuldade==1){
 		//facil
-		calc,valor1=rand()%11; //0 a 10
-		calc.valo2=rand)()%11;
+		calc.valor1=rand()%11; //0 a 10
+		calc.valor2=rand()%11;
 	} else if (calc.dificuldade==2){
 		//medio
-		calc.valo1=rand)()%101; //0 a 100
-		calc.valo2=rand)()%101; ///0 a 100
+		calc.valor1=rand()%101; //0 a 100
+		calc.valor2=rand()%101; ///0 a 100
 	}  else if (calc.dificuldade==3){
 		//dificil
-		calc.valo1=rand)()%1001;
-		calc.valo2=rand)()%1001;
-	} else if (calc.dificuldade==3){
+		calc.valor1=rand()%1001;
+		calc.valor2=rand()%1001;
+	} else if (calc.dificuldade==4){
 		//ultra dificil
-		calc.valo1=rand)()%10001;
-		calc.valo2=rand)()%10001;
-	else {
+		calc.valor1=rand()%10001;
+		calc.valor2=rand()%10001;
+	}else {
 		//ultra
-		calc.valo1=rand)()%100001;
-		calc.valo2=rand)()%100001;
+		calc.valor1=rand()%100001;
+		calc.valor2=rand()%100001;
 	}
 	
-	int resposta;
+	int resultado;
 	cout<<"Informe o resultado para a seguinte operação: "<<endl;
 	
 	//soma
 	if (calc.operacao==0){
 		cout<<calc.valor1+calc.valor2;
-		cin>>"resultado:">>resultado;
+		cout<<"resultado: ";
+		cin>>resultado;
 		
-		if (somar(resposta, calc)){
+		if (somar(resultado, calc)){
 			pontos+=1;
 			cout<<"voce tem "<<pontos<< "ponto(s)"<<endl;
 		}
 	}//diminuir
 	else if (calc.operacao==1){
 		cout<<calc.valor1-calc.valor2;
-		cin>>"resultado:">>resultado;
+		cout<<"resultado: ";
+		cin>>resultado;
 		
-		if (subtrair(resposta, calc)){
+		if (subtrair(resultado, calc)){
 			pontos+=1;
 			cout<<"voce tem "<<pontos<< "ponto(s)"<<endl;
 		}	
 	}//multiplicar
 	else if (calc.operacao==2){
 		cout<<calc.valor1*calc.valor2;
-		cin>>"resultado:">>resultado;
+		cout<<"resultado: ";
+		cin>>resultado;
 		
-		if (multiplicar(resposta, calc)){
+		if (multiplicar(resultado, calc)){
 			pontos+=1;
 			cout<<"voce tem "<<pontos<< "ponto(s)"<<endl;
 		}
@@ -104,7 +109,7 @@ void mostrarInfo(Calcular calc){
 }
 
 int somar (int resposta, Calcular calc){
-	int resultado = calc.valor1+calc>valor2;
+	int resultado = calc.valor1+calc.valor2;
 	calc.resultado = resultado;
 	int certo =0;//0=errado e 1=certo
 	
@@ -121,7 +126,7 @@ int somar (int resposta, Calcular calc){
 }
 
 int subtrair (int resposta, Calcular calc){
-	int resultado = calc.valor1-calc>valor2;
+	int resultado = calc.valor1-calc.valor2;
 	calc.resultado = resultado;
 	int certo =0;//0=errado e 1=certo
 	
@@ -138,7 +143,7 @@ int subtrair (int resposta, Calcular calc){
 }
 
 int multiplicar (int resposta, Calcular calc){
-	int resultado = calc.valor1*calc>valor2;
+	int resultado = calc.valor1*calc.valor2;
 	calc.resultado = resultado;
 	int certo =0;//0=errado e 1=certo
 	
